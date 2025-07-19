@@ -34,21 +34,35 @@ import java.util.function.Supplier;
  */
 public class ProxyGenerico<T, U>{
     
-    private T objetoreal;
+    private T objetoReal;
     private final Supplier<T> criadorObjeto;
-    private final Predicate<U> seguranca;
+    private final Predicate<U> seguranca;//Funciona como interfece mas usando booleano
 
-    public ProxyGenerico(Supplier<T> criadorObjeto, Predicate seguranca) {
-        this.objetoreal = null;
+    public ProxyGenerico(Supplier<T> criadorObjeto, Predicate<U> seguranca) {
+        this.objetoReal = null;
         this.criadorObjeto = criadorObjeto;
         this.seguranca = seguranca;
     }
     
-    
-    
-    
-    
-    
-
+    public T getObjeto(U regraDeSegurança){
+        
+        //Verifica se passou pelo sistema de segurança(Proxy de Proteção)
+        if(!seguranca.test(regraDeSegurança)){
+            throw new SecurityException("Acesso Negado");
+        }
+        
+        //Se passou, verifica se e necessário criar o objeto(Proxy Virtual)
+        
+        if(objetoReal == null){
+            System.out.println("Criando objeto...");
+            this.objetoReal = criadorObjeto.get();                  
+        }
+        
+        else{
+            System.out.println("Acesso Liberado");
+        }
+        
+        return this.objetoReal;       
+    }
    
 }
