@@ -24,7 +24,7 @@ package br.edu.ifnmg.spp1.proxygenerico;
  * @author SamuelParanhos
  */
 public class ProxyGenerico<T, U>{
-    
+    //teste
     private T objetoreal;
     
 
