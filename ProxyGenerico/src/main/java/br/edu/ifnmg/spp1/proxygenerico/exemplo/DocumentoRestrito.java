@@ -13,7 +13,8 @@ import java.nio.file.Path;
  *
  * @author SamuelParanhos
  */
-public class DocumentoRestrito implements Documento {
+public class DocumentoRestrito 
+        implements Documento {
 
     private Path arquivo;
     private List<String> linhas;
