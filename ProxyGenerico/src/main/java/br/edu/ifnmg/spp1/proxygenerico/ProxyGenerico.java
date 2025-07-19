@@ -19,13 +19,35 @@
 
 package br.edu.ifnmg.spp1.proxygenerico;
 
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+
 /**
  *
  * @author SamuelParanhos
  */
+
+/**
+ * Proxy Genérico com foco nas aplicações do Proxy Virtual e Proxy de Proteção
+ * @param <T> O tipo do objeto real
+ * @param <U> O tipo do objeto para validação da segurança
+ */
 public class ProxyGenerico<T, U>{
-    //teste
+    
     private T objetoreal;
+    private final Supplier<T> criadorObjeto;
+    private final Predicate<U> seguranca;
+
+    public ProxyGenerico(Supplier<T> criadorObjeto, Predicate seguranca) {
+        this.objetoreal = null;
+        this.criadorObjeto = criadorObjeto;
+        this.seguranca = seguranca;
+    }
+    
+    
+    
+    
+    
     
 
    
